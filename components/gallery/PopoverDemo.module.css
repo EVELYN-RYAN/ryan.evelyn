@@ -1,0 +1,35 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.buttonTrigger {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+}
+
+.buttonTrigger:hover {
+  border-color: var(--accent-green-dim);
+}
+
+.linkTrigger {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.imageTrigger {
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+}
+
+.content {
+  max-width: 220px;
+  font-size: 0.9rem;
+}

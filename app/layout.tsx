@@ -3,6 +3,7 @@ import { Orbitron, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { HeroScrollProvider } from "@/lib/scroll/HeroScrollContext";
 import { TrackerProvider } from "@/lib/TrackerProvider";
 import { StickyNav } from "@/components/nav/StickyNav";
+import { ConfirmDialogHost } from "@/components/ui/ConfirmDialog";
 import "./globals.css";
 import styles from "./layout.module.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <StickyNav />
               <main className={styles.main}>{children}</main>
             </div>
+            <ConfirmDialogHost />
           </HeroScrollProvider>
         </TrackerProvider>
       </body>

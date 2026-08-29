@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.trigger {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  color: var(--danger);
+}
+
+.trigger:hover {
+  background: var(--danger);
+  color: var(--bg);
+}
+
+.result {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
