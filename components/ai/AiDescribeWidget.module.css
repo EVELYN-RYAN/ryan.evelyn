@@ -1,0 +1,39 @@
+.stage {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.trigger {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--accent-yellow);
+  border-radius: var(--radius-full);
+  color: var(--accent-yellow);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.trigger:hover:not(:disabled) {
+  box-shadow: var(--glow-yellow);
+}
+
+.trigger:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.result {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--accent-yellow);
+  max-width: 40ch;
+}
+
+.error {
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}

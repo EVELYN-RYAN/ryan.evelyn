@@ -1,0 +1,24 @@
+.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+}
+
+.iconLink:hover {
+  color: var(--accent-green);
+}
+
+@media (max-width: 768px) {
+  .socials {
+    flex-direction: row;
+    gap: var(--space-3);
+  }
+}

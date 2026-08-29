@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grizzly Bear v Silver Back</title>
+    <style>
+        body {
+            font-size: 10px;
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            font-family: "pokemon-font", monospace;
+        }
+        h1 {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<h1>Grizzly Bear v Silver Back</h1>
+<body>
+
+    <br>
+        <div style="position:absolute; left:250px; top:60px;">
+            <img src="/games/grizzly-vs-silverback/img/Grizzly Bear.jpg" style="width:128px;height:128px;">
+            <br>
+            <progress id="bearHP"></progress>
+            <label for="bearHP">Bear HP</label>
+        </div>
+
+
+    <br><br>
+    <div>
+        <img src="/games/grizzly-vs-silverback/img/Gorilla Backside.png" style="width:128px;height:128px;">
+        <br>
+        <progress id="gorillaHP"></progress>
+        <label for="gorillaHP">Gorilla HP</label>
+    </div>
+
+    <br>
+    <h2 id="results"></h2>
+    <button type="button" id="nextRound" value="Start Fight" onclick="checkWinner()"></button>
+    <hr> <hr>
+    <button type="button" onClick="window.location.reload();">Restart</button>
+    <br>
+    <br>
+    <script>
+
+        var gorillaHP = 150;
+        document.getElementById("gorillaHP").value = gorillaHP
+        document.getElementById("gorillaHP").max = gorillaHP
+        const gorillaPP = 20;
+
+        var bearHP = 150;
+        document.getElementById("bearHP").value = bearHP
+        document.getElementById("bearHP").max = bearHP
+        const bearPP = 35;
+
+        var counter = 0;
+        //Set up what button indicates
+        if (counter == 0){
+                document.getElementById("nextRound").innerHTML = "Start Fight"
+            }
+
+
+        // Who won indicator
+        function checkWinner(){
+            if(bearHP > 0 && gorillaHP > 0){
+                attackSetup()
+            }
+            else if (bearHP <=0){
+                document.getElementById("results").innerHTML = "GORILLA WON!!"
+
+            }
+            else if (gorillaHP<=0){
+                document.getElementById("results").innerHTML = "BEAR WON!!"
+            }
+        }
+        function attackSetup(){
+
+            //Conditionals for what animal attacks
+            let bearSpeed = Math.floor(Math.random() * 6);
+            let gorillaSpeed = Math.floor(Math.random() * 7);
+            let bearEvasive = Math.floor(Math.random() * 5);
+            let gorillaEvasive = Math.floor(Math.random() * 8);
+
+
+            //Set up who's turn it is to attack
+            counter += 1
+            if (counter % 2 == 0){
+                bearHit(bearSpeed,gorillaEvasive);
+            }
+            else{
+                gorillaHit(gorillaSpeed,bearEvasive);
+            }
+        document.getElementById("nextRound").innerHTML = "Next Round"
+        }
+
+// determine if hit and then alert/subtract/and change HP bar
+        function bearHit(speed,evasive){
+            var damage;
+            if (speed < evasive){
+                damage = 0;
+                var snd = new Audio("/games/grizzly-vs-silverback/wav/Missed Sound.wav");
+                snd.play();
+                document.getElementById("results").innerHTML = "Missed";
+            }
+            else {
+                damage = bearPP;
+                var snd = new Audio("/games/grizzly-vs-silverback/wav/Bear Hit.wav");
+                snd.play();
+                document.getElementById("results").innerHTML = "Bear hit Gorrilla. -"+bearPP+' Gorilla HP'
+            }
+        gorillaHP -= damage;
+        document.getElementById("gorillaHP").value = gorillaHP
+        }
+
+// determine if hit and then alert/subtract/and change HP bar
+        function gorillaHit(speed,evasive){
+            var damage;
+            if (speed < evasive){
+                damage = 0;
+                var snd = new Audio("/games/grizzly-vs-silverback/wav/Missed Sound.wav");
+                snd.play();
+                document.getElementById("results").innerHTML = "Missed!"
+            }
+            else {
+                damage = gorillaPP;
+                var snd = new Audio("/games/grizzly-vs-silverback/wav/Gorilla Hit.wav");
+                snd.play();
+                document.getElementById("results").innerHTML = "Gorrilla hit Bear. -"+gorillaPP+' Bear HP'
+            }
+        bearHP -= damage;
+        document.getElementById("bearHP").value = bearHP
+        }
+
+
+    </script>
+
+</body>
+</html>

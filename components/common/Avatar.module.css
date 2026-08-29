@@ -1,0 +1,5 @@
+.avatar {
+  border-radius: var(--radius-full);
+  box-shadow: var(--glow-green);
+  display: block;
+}

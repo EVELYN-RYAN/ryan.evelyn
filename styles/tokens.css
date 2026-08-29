@@ -1,0 +1,55 @@
+:root {
+  /* Surfaces */
+  --bg: #0a0c0e;
+  --bg-elevated: #12151a;
+  --bg-elevated-2: #181c22;
+  --border: #22262c;
+  --border-strong: #2f343b;
+
+  /* Text */
+  --fg: #e4e7ea;
+  --fg-muted: #8a9199;
+  --fg-faint: #565c63;
+
+  /* Accents */
+  --accent-green: #2cffb1;
+  --accent-green-dim: #1c8f66;
+  --accent-yellow: #f4ff3a;
+  --accent-yellow-dim: #8a8f1f;
+
+  /* Feedback states */
+  --danger: #ff5c5c;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Glow */
+  --glow-green: 0 0 12px rgba(44, 255, 177, 0.55);
+  --glow-yellow: 0 0 12px rgba(244, 255, 58, 0.5);
+
+  /* Layout */
+  --nav-width: 88px;
+  --content-max-width: 960px;
+
+  /* Z-index */
+  --z-popover: 1050;
+  --z-dialog: 1100;
+
+  /* Fonts (populated by next/font variables in layout.tsx) */
+  --font-display: var(--font-orbitron), "Orbitron", sans-serif;
+  --font-body: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
