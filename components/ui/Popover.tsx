@@ -122,7 +122,9 @@ export function Popover({ trigger, children, placement = "bottom-start", panelCl
   // `ref` isn't part of cloneElement's generic Attributes type, but is valid for
   // the native DOM elements this component requires as a trigger — cast around it.
   const clonedTrigger = cloneElement(trigger, {
-    ref: triggerRef,
+    ref: (node: HTMLElement | null) => {
+      triggerRef.current = node;
+    },
     "aria-haspopup": "dialog",
     "aria-expanded": open,
     onClick: (event: MouseEvent) => {

@@ -1,5 +1,6 @@
 @import "../styles/tokens.css";
 @import "../styles/base.css";
+@import "bndl/glass.css";
 
 .scanlines::before {
   content: "";

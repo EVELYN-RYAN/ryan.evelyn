@@ -20,5 +20,5 @@
   color: var(--fg-faint);
   padding: var(--space-2) var(--space-4);
   border-bottom: 1px solid var(--border);
-  background: var(--bg-elevated-2);
+  background: var(--bg-3);
 }

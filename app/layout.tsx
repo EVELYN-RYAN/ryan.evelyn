@@ -3,6 +3,9 @@ import { Orbitron, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { HeroScrollProvider } from "@/lib/scroll/HeroScrollContext";
 import { TrackerProvider } from "@/lib/TrackerProvider";
 import { StickyNav } from "@/components/nav/StickyNav";
+import { themeInitScript } from "@/lib/theme";
+import { StarryBackground } from "@/components/common/StarryBackground";
+import { LiquidGlassFilter } from "bndl";
 import { ConfirmDialogHost } from "@/components/ui/ConfirmDialog";
 import "./globals.css";
 import styles from "./layout.module.css";
@@ -33,10 +36,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${orbitron.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      data-theme="dark"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="scanlines">
+        <LiquidGlassFilter />
         <TrackerProvider>
           <HeroScrollProvider>
+            <StarryBackground />
             <div className={styles.shell}>
               <StickyNav />
               <main className={styles.main}>{children}</main>

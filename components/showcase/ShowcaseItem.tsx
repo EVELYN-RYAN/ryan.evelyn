@@ -1,5 +1,5 @@
 "use client";
-
+import { cx } from "@/packages/bndl/src/utils/cx";
 import type { ReactNode } from "react";
 import type { ShowcaseItemMeta } from "@/lib/content/projects";
 import { KudosButton } from "@/components/kudos/KudosButton";
@@ -15,7 +15,7 @@ interface ShowcaseItemProps {
 
 export function ShowcaseItem({ meta, demo, isCodeOpen, onToggleCode }: ShowcaseItemProps) {
   return (
-    <article className={styles.card} data-track-section={meta.id}>
+    <article className={cx(styles.card, 'glass')} data-track-section={meta.id}>
       <div className={styles.header}>
         <h3>{meta.title}</h3>
         <p>{meta.description}</p>
@@ -27,13 +27,11 @@ export function ShowcaseItem({ meta, demo, isCodeOpen, onToggleCode }: ShowcaseI
           ))}
         </div>
       </div>
-
       {demo ? (
         <div className={styles.demo}>{demo}</div>
       ) : (
         <p className={styles.noDemo}>Vanilla-JS module — no live UI, see the source below.</p>
       )}
-
       <button
         type="button"
         className={styles.codeToggle}

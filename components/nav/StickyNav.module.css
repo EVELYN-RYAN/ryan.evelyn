@@ -11,6 +11,7 @@
   padding: var(--space-5) 0;
   border-right: 1px solid var(--border);
   background: var(--bg);
+  backdrop-filter: var(--glass-blur);
   z-index: 10;
 }
 
@@ -41,6 +42,13 @@
 .link:hover {
   color: var(--accent-green);
   text-decoration: none;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .metricsLink {

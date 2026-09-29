@@ -15,7 +15,7 @@
 
 .trigger:hover {
   background: var(--danger);
-  color: var(--bg);
+  color: var(--bg-solid);
 }
 
 .result {

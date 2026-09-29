@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NavAvatar } from "./NavAvatar";
 import { SocialLinks } from "./SocialLinks";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./StickyNav.module.css";
 
 export function StickyNav() {
@@ -18,9 +19,15 @@ export function StickyNav() {
         </Link>
       </div>
       <SocialLinks />
-      <Link href="/metrics" className={styles.metricsLink} data-track-id="nav-metrics">
-        ·
-      </Link>
+      <div className={styles.footerLinks}>
+        <ThemeToggle />
+        <Link href="/components" className={styles.metricsLink} data-track-id="nav-components">
+          ‹/›
+        </Link>
+        <Link href="/metrics" className={styles.metricsLink} data-track-id="nav-metrics">
+          ·
+        </Link>
+      </div>
     </nav>
   );
 }

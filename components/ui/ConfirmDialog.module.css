@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-dialog);
-  background: color-mix(in srgb, var(--bg) 65%, transparent);
+  background: color-mix(in srgb, var(--bg-solid) 65%, transparent);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -14,7 +14,8 @@
 .dialog {
   width: 100%;
   max-width: 400px;
-  background: var(--bg-elevated);
+  background: var(--bg-2);
+  backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
@@ -50,13 +51,13 @@
 }
 
 .confirm {
-  color: var(--bg);
+  color: var(--bg-solid);
   background: var(--accent-green);
   border-color: var(--accent-green);
 }
 
 .danger {
-  color: var(--bg);
+  color: var(--bg-solid);
   background: var(--danger);
   border-color: var(--danger);
 }

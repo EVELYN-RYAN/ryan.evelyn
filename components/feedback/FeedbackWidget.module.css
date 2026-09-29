@@ -14,7 +14,7 @@
   gap: var(--space-3);
   margin-top: var(--space-3);
   padding: var(--space-4);
-  background: var(--bg-elevated-2);
+  background: var(--bg-3);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
@@ -51,7 +51,7 @@
 .submit {
   padding: var(--space-2) var(--space-4);
   background: var(--accent-green);
-  color: var(--bg);
+  color: var(--bg-solid);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.8rem;

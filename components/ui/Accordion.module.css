@@ -18,11 +18,11 @@
   gap: var(--space-3);
   padding: var(--space-4);
   text-align: left;
-  background: var(--bg-elevated);
+  background: var(--bg-2);
 }
 
 .header:hover {
-  background: var(--bg-elevated-2);
+  background: var(--bg-3);
 }
 
 .chevron {

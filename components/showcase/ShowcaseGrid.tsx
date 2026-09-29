@@ -1,7 +1,7 @@
 import { projects } from "@/lib/content/projects";
 import { CodeViewer } from "./CodeViewer";
 import { ShowcaseRow } from "./ShowcaseRow";
-import { HashedOutButton } from "./demos/HashedOutButton";
+import { Button } from "bndl";
 import { GameLink } from "./demos/GameLink";
 import { AiDescribeWidget } from "@/components/ai/AiDescribeWidget";
 import type { ShowcaseItemMeta } from "@/lib/content/projects";
@@ -15,7 +15,7 @@ function demoFor(meta: ShowcaseItemMeta) {
   }
   switch (meta.id) {
     case "hashed-out-button":
-      return <HashedOutButton />;
+      return <Button label={'Click Me'}/>;
     case "ai-tagline":
       return <AiDescribeWidget itemId={meta.id} />;
     default:

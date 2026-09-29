@@ -1,0 +1,99 @@
+/* Global liquid glass surface — apply with className="glass".
+   Base layer is CSS-only (specular rim, lit edges, thickness) and works
+   everywhere. Chromium additionally refracts the backdrop through the SVG
+   filter rendered by <LiquidGlassFilter />. Radius is overridable; the
+   pseudo-elements inherit it. Reads the app's surface/glass tokens when
+   present (see styles/tokens.css) and falls back to dark defaults. */
+
+.glass {
+  --glass-mint: 44, 255, 177; /* #2CFFB1 */
+  --glass-lime: 244, 255, 58; /* #F4FF3A */
+  /* Tint tier — override per element, e.g. --glass-surface: var(--bg-3) */
+  --glass-surface: var(--bg, transparent);
+
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 35%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.06) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(var(--glass-mint), 0.06),
+      rgba(var(--glass-lime), 0.05)
+    ),
+    var(--glass-surface);
+  /* Low blur keeps it clear like a lens rather than frosted */
+  backdrop-filter: blur(3px) saturate(170%) brightness(1.08);
+  box-shadow:
+    /* depth */
+    var(--glass-shadow, 0 12px 32px rgba(0, 0, 0, 0.35)),
+    0 0 24px rgba(var(--glass-mint), 0.1),
+    /* lit top edge, dim bottom edge */
+    inset 0 1px 0 var(--glass-edge-light, rgba(255, 255, 255, 0.55)),
+    inset 0 -1px 0 var(--glass-edge-dark, rgba(255, 255, 255, 0.12)),
+    /* chromatic fringe hugging the rim */
+    inset 8px 10px 18px -12px rgba(var(--glass-mint), 0.45),
+    inset -8px -10px 18px -12px rgba(var(--glass-lime), 0.4),
+    /* body thickness */
+    inset 0 0 22px rgba(255, 255, 255, 0.06);
+}
+
+/* Specular rim: bright where light hits the corners, fading along the sides */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(var(--glass-mint), 0.6) 18%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(var(--glass-lime), 0.6) 82%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Surface sheen: soft highlight pooled at the top-left, like light on a curve */
+.glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      120% 60% at 15% 0%,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0) 55%
+    ),
+    radial-gradient(
+      80% 40% at 90% 100%,
+      rgba(var(--glass-lime), 0.08) 0%,
+      rgba(var(--glass-lime), 0) 60%
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Refraction — Chromium only. paint() is a Chromium-only feature, used here as
+   a proxy because Safari/Firefox don't support url() filters in
+   backdrop-filter and would otherwise lose the blur too. */
+@supports (background-image: paint(id)) {
+  .glass {
+    backdrop-filter: url(#bndl-liquid-glass) blur(1.5px) saturate(170%)
+      brightness(1.08);
+  }
+}

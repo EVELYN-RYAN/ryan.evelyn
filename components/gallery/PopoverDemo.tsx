@@ -22,7 +22,7 @@ export function PopoverDemo() {
       <Popover
         trigger={
           // eslint-disable-next-line @next/next/no-img-element -- must be a raw <img> so Popover's ref attaches to the DOM node directly
-          <img src="/assets/img/RyanWebsiteImage.png" alt="Image trigger" width={44} height={44} className={styles.imageTrigger} />
+          <img src="assets/img/RyanWebsiteImage.png" alt="Image trigger" width={44} height={44} className={styles.imageTrigger} />
         }
       >
         <p className={styles.content}>Anchored to an image.</p>
