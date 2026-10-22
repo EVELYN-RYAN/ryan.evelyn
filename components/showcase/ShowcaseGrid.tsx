@@ -15,7 +15,7 @@ function demoFor(meta: ShowcaseItemMeta) {
   }
   switch (meta.id) {
     case "hashed-out-button":
-      return <Button label={'Click Me'}/>;
+      return <Button status="done" label={'Finished'} />;
     case "ai-tagline":
       return <AiDescribeWidget itemId={meta.id} />;
     default:

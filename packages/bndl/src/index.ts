@@ -1,5 +1,5 @@
 export { default as Button } from './Button/Button'
-export type { ButtonProps, ButtonStatus, ButtonVariant } from './Button/Button'
+export type { ButtonProps, ButtonStatus, CancelableButtonStatus } from './Button/Button'
 
 export { cx } from './utils/cx'
 

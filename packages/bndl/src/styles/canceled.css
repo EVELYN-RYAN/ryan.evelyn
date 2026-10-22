@@ -1,0 +1,8 @@
+.canceled {
+  --glass-mint: var(--neutral-rgb);
+  --glass-lime: var(--neutral-rgb);
+}
+
+.canceled::before {
+  background: var(--border-strong);
+}

@@ -1,0 +1,20 @@
+.pulse {
+  animation: pulse var(--pulse-speed, 0.9s) ease-in-out var(--pulse-count, 7);
+}
+
+.pulse::before {
+  --rim-width: var(--pulse-width, 2px);
+  background: rgb(var(--glass-mint));
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    --glass-mint: var(--accent-green-rgb);
+    --glass-lime: var(--accent-yellow-rgb);
+  }
+  50% {
+    --glass-mint: var(--accent-yellow-rgb);
+    --glass-lime: var(--accent-yellow-rgb);
+  }
+}

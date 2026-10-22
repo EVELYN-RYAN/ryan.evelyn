@@ -1,0 +1,17 @@
+:where(.rim, .loading, .error, .pulse, .canceled) {
+  position: relative;
+}
+
+:is(.rim, .glass, .loading, .error, .pulse, .canceled)::before {
+  content: '';
+  position: absolute;
+  inset: calc(var(--rim-width, 1px) * -1);
+  padding: var(--rim-width, 1px);
+  border-radius: inherit;
+  background: var(--rim-fill, var(--border-strong));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}

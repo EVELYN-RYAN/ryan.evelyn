@@ -2,21 +2,59 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font: inherit;
-  color: inherit;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
   cursor: pointer;
   transition: opacity 150ms ease;
 }
 
 .content[data-status='loading'] {
   cursor: progress;
-  opacity: 0.8;
+}
+
+.content[data-status='loading'][data-cancelable] {
+  cursor: pointer;
 }
 
 .disabled,
-.content:disabled:not([data-status='loading']) {
+.content:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.labels {
+  display: grid;
+  transition: opacity 150ms ease;
+}
+
+.label {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.label[data-active='false'] {
+  visibility: hidden;
+}
+
+.cancel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: inherit;
+  background: var(--bg-3);
+  color: rgb(var(--danger-rgb));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.content:is(:hover, :focus-visible) .cancel {
+  opacity: 1;
+}
+
+.content[data-status='loading'][data-cancelable]:is(:hover, :focus-visible) .labels {
+  opacity: 0;
 }
